@@ -87,6 +87,8 @@ const AvailablePlayer = () => {
                 axiosPublic.delete(`/selected/${_id}`)
                     .then(res => {
                         if (res.status === 200) {
+                            const filter = selectedPlayers.filter(player => player._id !== _id);
+                            setSelectedPlayers(filter);
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your selected player has been deleted.",
